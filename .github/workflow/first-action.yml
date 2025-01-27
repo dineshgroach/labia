@@ -1,4 +1,4 @@
-name: lab ia yaml
+name: Lab IA 
 on: [push]
 
 jobs:
@@ -7,7 +7,7 @@ jobs:
         
         strategy:
           matrix:
-            python-version: [3.8]
+            python-version: [3.8,3.9]
             
         steps:
         - uses: actions/checkout@v3
@@ -16,11 +16,11 @@ jobs:
           with:
             python-version: ${{matrix.python-version}}
             
-        - name: Install Python Dependencies
+        - name: Install Dependencies
           run: | 
            python -m pip install --upgrade pip
            pip install pytest
            
-        - name: Run Sample Tests
+        - name: Run Tests
           run: |
             python -m pytest addition.py
